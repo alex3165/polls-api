@@ -70,7 +70,7 @@ const setup = (db: Idb) => {
       }
 
       const poll: Poll = db[req.params.pollId];
-      const answer = poll.answer.find((a) => a.id == req.params.answerId);
+      const answer = poll.answer.find((a) => a.id === req.params.answerId);
 
       if (!answer) {
         res.status(404).send(error('answerId does not exists'));
