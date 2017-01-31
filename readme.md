@@ -1,6 +1,6 @@
 # Node-express-ts
 
-Simple boilerplate to setup nodejs express with typescript
+Simple API to create polls and vote
 
 # API
 
