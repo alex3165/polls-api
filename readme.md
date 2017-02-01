@@ -23,6 +23,23 @@ Response
 }
 ```
 
+## GET /polls:/pollId
+
+Get the poll for the given id
+
+Response
+```
+{
+  "id": "pollId",
+  "title": "pollTitle",
+  "answer": [{
+    "id": "answerId",
+    "answer": "The answer text",
+    "votes": 1
+  }]
+}
+```
+
 ## POST /polls
 
 Create a new Poll, can be initialised it with some default answer
