@@ -45,6 +45,9 @@ const setup = (db: Idb) => {
     .get('/', (req, res) => {
       res.status(200).send(indexEndpointContent);
     })
+    .get('/polls', (req, res) => {
+      res.status(200).send(db);
+    })
     .get('/poll', (req, res) => {
       const poll: Poll = db[req.query.pollId];
       if (poll) {
@@ -52,9 +55,6 @@ const setup = (db: Idb) => {
       } else {
         res.status(404).send(error('No poll found with the id: ' + req.query.pollId));
       }
-    })
-    .get('/polls', (req, res) => {
-      res.status(200).send(db);
     })
     .post('/polls', (req, res) => {
       Joi.validate(req.body, pollSchema, (err, status) => {
@@ -76,34 +76,36 @@ const setup = (db: Idb) => {
         res.status(200).send(db[key]);
       });
     })
-    .post('/polls/:pollId', (req, res) => {
+    .post('/poll/answers', (req, res) => {
       // Check pollId
-      if (!db[req.params.pollId]) {
+      if (!db[req.body.pollId]) {
         res.status(404).send(error('Poll id does not exists'));
         return;
       }
 
       // Check answersSchema
-      Joi.validate(req.body, answersSchema, (err, value) => {
+      Joi.validate(req.body.answers, answersSchema, (err, value) => {
         if (err) {
           res.status(404).send(error(err.message));
           return;
         }
-        const answers: Answer[] = req.body.map(getAnswer)
+        const answers: Answer[] = req.body.answers.map(getAnswer)
 
-        const poll = db[req.params.pollId];
+        const poll = db[req.body.pollId];
         poll.answer.push(...answers);
         res.status(200).send(poll);
       });
     })
-    .post('/polls/:pollId/answer/:answerId', (req, res) => {
-      if (!db[req.params.pollId]) {
+    .post('/poll/vote', (req, res) => {
+      console.log('Body', req.body);
+
+      if (!db[req.body.pollId]) {
         res.status(404).send(error('Poll id does not exists'));
         return;
       }
 
-      const poll: Poll = db[req.params.pollId];
-      const answer = poll.answer.find((a) => a.id === req.params.answerId);
+      const poll: Poll = db[req.body.pollId];
+      const answer = poll.answer.find((a) => a.id === req.body.answerId);
 
       if (!answer) {
         res.status(404).send(error('answerId does not exists'));

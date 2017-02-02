@@ -23,7 +23,7 @@ Response
 }
 ```
 
-## GET /polls:/pollId
+## GET /poll?pollId=pollId
 
 Get the poll for the given id
 
@@ -67,17 +67,20 @@ Response
 }
 ```
 
-## POST /polls/:pollId
+## POST /poll/answers
 
 Add an answer the poll (pollId)
 
 Request
 ```
-[
-  {
-    "answer": "The answer text"
-  }
-]
+{
+  "pollId": "pollId",
+  "answers": [
+    {
+      "answer": "The answer text"
+    }
+  ]
+}
 ```
 
 Response
@@ -93,9 +96,17 @@ Response
 }
 ```
 
-## POST /polls/:pollId/answer/:answerId
+## POST /poll/vote
 
 Add a vote to the poll (pollId) and to the answer (answerId)
+
+Request
+```
+{
+  "pollId": "pollId",
+  "answerId": "answerId"
+}
+```
 
 Response
 ```
