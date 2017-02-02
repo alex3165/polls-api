@@ -25,7 +25,7 @@ fs.readFile('./readme.md', 'utf8', (err, data) => {
   indexEndpointContent =  template(Marked(data));
 });
 
-const getAnswer = (a:Answer) => ({
+const getAnswer = (a: Answer) => ({
   id: uuid.v4(),
   ...a,
   votes: 0
@@ -45,16 +45,16 @@ const setup = (db: Idb) => {
     .get('/', (req, res) => {
       res.status(200).send(indexEndpointContent);
     })
+    .get('/poll', (req, res) => {
+      const poll: Poll = db[req.query.pollId];
+      if (poll) {
+        res.status(200).send(poll);
+      } else {
+        res.status(404).send(error('No poll found with the id: ' + req.query.pollId));
+      }
+    })
     .get('/polls', (req, res) => {
       res.status(200).send(db);
-    })
-    .get('/polls:/pollId', (req, res) => {
-      const poll: Poll = db[req.params.pollId];
-      if (poll) {
-        res.status(200).send(db);
-      } else {
-        res.status(404).send(error('No poll found with the id: ' + req.params.pollId));
-      }
     })
     .post('/polls', (req, res) => {
       Joi.validate(req.body, pollSchema, (err, status) => {
