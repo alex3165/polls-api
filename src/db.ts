@@ -1,4 +1,5 @@
 import * as Joi from 'joi';
+import data from './data';
 
 export interface Answer {
   id: string;
@@ -27,6 +28,6 @@ export interface Idb {
   [uuid: string]: Poll
 }
 
-const db: Idb = {};
+const db: Idb = data;
 
 export default db;

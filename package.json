@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "build:watch": "tsc --watch",
-    "start": "node dist/index.js"
+    "build:watch": "cp readme.md dist/readme.md && tsc --watch",
+    "start": "node dist/index.js",
+    "start:watch": "cd dist && nodemon --watch index.js"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +20,7 @@
     "@types/marked": "0.0.28",
     "@types/node": "^7.0.4",
     "@types/node-uuid": "0.0.28",
+    "nodemon": "^1.11.0",
     "tslint": "^4.4.2",
     "typescript": "^2.1.5"
   },
