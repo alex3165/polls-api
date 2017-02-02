@@ -4,6 +4,7 @@ import * as uuid from 'node-uuid';
 import * as Joi from 'joi';
 import * as Marked from 'marked';
 import * as fs from 'fs';
+import { emit } from '../pollEmitter';
 
 const template = (data: string) => `
 <link rel="stylesheet" href="https://sindresorhus.com/github-markdown-css/github-markdown.css">
@@ -111,7 +112,8 @@ const setup = (db: Idb) => {
         res.status(404).send(error('answerId does not exists'));
       } else {
         answer.votes += 1;
-        res.status(201).send(poll);  
+        res.status(201).send(poll);
+        emit(poll);
       }
     });
 };
