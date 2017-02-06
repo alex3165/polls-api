@@ -23,6 +23,25 @@ Response
 }
 ```
 
+## GET /reset
+
+Reset the polls to their initial state
+
+Response
+```
+{
+  "pollId": {
+    "id": "pollId",
+    "title": "pollTitle",
+    "answer": [{
+      "id": "answerId",
+      "answer": "The answer text",
+      "votes": 1
+    }]
+  }
+}
+```
+
 ## GET /poll?pollId=pollId
 
 Get the poll for the given id
