@@ -1,4 +1,4 @@
-# Node-express-ts
+# Polls API
 
 Simple API to create polls and vote
 
