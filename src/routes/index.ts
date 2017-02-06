@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { Idb, Poll, Answer, answersSchema, pollSchema } from '../db';
+import { Idb, Poll, Answer, answersSchema, pollSchema, defaultState } from '../db';
 import * as uuid from 'node-uuid';
 import * as Joi from 'joi';
 import * as Marked from 'marked';
@@ -45,6 +45,10 @@ const setup = (db: Idb) => {
   return express.Router()
     .get('/', (req, res) => {
       res.status(200).send(indexEndpointContent);
+    })
+    .get('/reset', (req, res) => {
+      db = defaultState;
+      res.status(200).send(db);
     })
     .get('/polls', (req, res) => {
       res.status(200).send(db);

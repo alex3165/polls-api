@@ -28,6 +28,8 @@ export interface Idb {
   [uuid: string]: Poll
 }
 
+export const defaultState = { ...data };
+
 const db: Idb = data;
 
 export default db;
