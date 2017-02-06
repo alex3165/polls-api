@@ -104,8 +104,6 @@ const setup = () => {
       });
     })
     .post('/poll/vote', (req, res) => {
-      console.log('Body', req.body);
-
       if (!db.getPoll(req.body.pollId)) {
         res.status(404).send(error('Poll id does not exists'));
         return;

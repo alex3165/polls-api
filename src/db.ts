@@ -29,10 +29,10 @@ export interface Idb {
 }
 
 export class DB {
-  private data: Idb = { ...data };
+  private data: Idb = JSON.parse(JSON.stringify(data));
 
   reset() {
-    this.data = { ...data };
+    this.data = JSON.parse(JSON.stringify(data));
     return this;
   }
 
