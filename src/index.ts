@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
-import db from './db';
+// import db from './db';
 import * as WebSocket from 'ws';
 import * as http from 'http';
 import mainRoutes from './routes';
@@ -13,7 +13,7 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(mainRoutes(db));
+app.use(mainRoutes()); // db
 
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });

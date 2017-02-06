@@ -28,8 +28,24 @@ export interface Idb {
   [uuid: string]: Poll
 }
 
-export const defaultState = { ...data };
+export class DB {
+  private data: Idb = { ...data };
 
-const db: Idb = data;
+  reset() {
+    this.data = { ...data };
+    return this;
+  }
 
-export default db;
+  get() {
+    return this.data;
+  }
+
+  getPoll(id: string) {
+    return this.data[id];
+  }
+
+  setPoll(id: string, poll: Poll) {
+    this.data[id] = poll;
+    return this.data[id];
+  }
+}
