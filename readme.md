@@ -2,6 +2,28 @@
 
 Simple API to create polls and vote
 
+# Websocket endpoint
+
+## /
+```
+wsc http://localhost:8080/
+```
+
+Return the poll object everytime it is 
+
+Message
+```
+{
+  "id": "pollId",
+  "title": "pollTitle",
+  "answer": [{
+    "id": "answerId",
+    "answer": "The answer text",
+    "votes": 1
+  }]
+}
+```
+
 # API
 
 ## GET /polls
