@@ -23,6 +23,12 @@ wss.on('connection', (ws: any) => {
 
   listerner((data: any) => {
     // Send updated poll everytime we receive a new vote
+    wss.clients.forEach((client) => {
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        client.send(data);
+      }
+    });
+
     ws.send(JSON.stringify(data));
   });
 });
