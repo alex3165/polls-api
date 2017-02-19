@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(mainRoutes()); // db
 
 const server = http.createServer(app);
-const wss = new WebSocket.Server({ server });
+const wss = new WebSocket.Server({ server, path: '/socket' });
 
 listerner((data: any) => {
   // Send updated poll everytime we receive a new vote to everyone connected

@@ -4,9 +4,9 @@ Simple API to create polls and vote
 
 # Websocket endpoint
 
-## ws://api.alexrieux.fr
+## /socket
 ```
-wsc http://api.alexrieux.fr
+wsc http://api.alexrieux.fr/socket
 ```
 
 Return a poll object everytime someone vote on any poll
