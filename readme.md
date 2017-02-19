@@ -4,12 +4,12 @@ Simple API to create polls and vote
 
 # Websocket endpoint
 
-## /
+## ws://api.alexrieux.fr
 ```
-wsc http://localhost:8080/
+wsc http://api.alexrieux.fr
 ```
 
-Return the poll object everytime it is 
+Return a poll object everytime someone vote on any poll
 
 Message
 ```
