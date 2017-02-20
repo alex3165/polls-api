@@ -18,10 +18,19 @@ app.use(mainRoutes()); // db
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server, path: '/socket' });
 
+wss.clients.forEach((client) => {
+  client.on('error', (err) => {
+    console.error('Client error: ', err);
+  });
+});
+
 listerner((data: any) => {
   // Send updated poll everytime we receive a new vote to everyone connected
   wss.clients.forEach((client) => {
     if (client.readyState === WebSocket.OPEN) {
+      console.log('Client state: ', client.readyState);
+      console.log('Client send data: ', data);
+
       client.send(JSON.stringify(data));
     }
   });
