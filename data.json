@@ -1,0 +1,28 @@
+{
+  "1234": {
+    "id": "1234",
+    "title": "Which is your favourite programming language?",
+    "answer": [
+      {
+        "id": "1",
+        "answer": "Javascript",
+        "votes": 0
+      },
+      {
+        "id": "2",
+        "answer": "Go",
+        "votes": 0
+      },
+      {
+        "id": "3",
+        "answer": "Haskell",
+        "votes": 0
+      },
+      {
+        "id": "4",
+        "answer": "C++",
+        "votes": 0
+      }
+    ]
+  }
+}

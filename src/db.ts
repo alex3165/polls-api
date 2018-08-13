@@ -1,5 +1,5 @@
 import * as Joi from 'joi';
-import data from './data';
+const data = require('../data.json');
 
 export interface Answer {
   id: string;

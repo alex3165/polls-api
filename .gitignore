@@ -1,2 +1,5 @@
 node_modules
 dist
+key.txt
+yarn.lock
+.DS_STORE
