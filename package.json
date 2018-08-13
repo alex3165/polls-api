@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "mkdir dist && cp readme.md dist && cp data.json dist && tsc",
     "build:watch": "concurrently \"cpx \"**/*.{md,json}\" dist\" \"tsc --watch\"",
     "start": "node dist/index.js",
     "start:watch": "cd dist && nodemon --watch index.js"
